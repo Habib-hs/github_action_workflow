@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: my_postgres
+    environment:
+      POSTGRES_DB: mydb
+      POSTGRES_USER: myuser
+      POSTGRES_PASSWORD: mypassword
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:7
+    container_name: my_redis
+    ports:
+      - "6379:6379"
+
+# app:   // only when i wnat that my applicaiton also will be run when i up the docker compose
+#   build:
+#     context: .
+#     dockerfile: Dockerfile
+#   container_name: my_app
+#   depends_on:
+#     - postgres
+#     - redis
+#   ports:
+#     - "8080:8080"
+#   environment:
+#     SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/mydb
+#     SPRING_DATASOURCE_USERNAME: myuser
+#     SPRING_DATASOURCE_PASSWORD: mypassword
+#     SPRING_REDIS_HOST: redis
+#     SPRING_REDIS_PORT: 6379
+
+volumes:
+  postgres_data:
