@@ -7,6 +7,6 @@ public class HelloController {
 
     @GetMapping("/hello")
     public String sayHello() {
-        return "Hello World" // 🔥 INTENTIONAL ERROR (missing ;)
+        return "Hello World"; // 🔥 INTENTIONAL ERROR (missing ;)
     }
 }
