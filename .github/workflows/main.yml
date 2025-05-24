@@ -40,3 +40,12 @@ jobs:
 
       - name: Build with Maven
         run: mvn clean install
+
+      - name: Run Spring Boot app
+        run: java -jar target/*.jar
+        env:
+            SPRING_DATASOURCE_URL: ${{ env.SPRING_DATASOURCE_URL }}
+            SPRING_DATASOURCE_USERNAME: ${{ env.SPRING_DATASOURCE_USERNAME }}
+            SPRING_DATASOURCE_PASSWORD: ${{ env.SPRING_DATASOURCE_PASSWORD }}
+            SPRING_REDIS_HOST: ${{ env.SPRING_REDIS_HOST }}
+            SPRING_REDIS_PORT: ${{ env.SPRING_REDIS_PORT }}
